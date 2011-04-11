@@ -7,12 +7,19 @@ import models.*;
 
 public class LdapTest extends UnitTest {
 
+	@Before
+	public void createUser()
+	{
+		// Create a new user and save it
+		new LdapUser("flora.dupont@utt.fr", "test", "Flora", "Dupont", "flora.dupont").addUser();
+	}
+
 	@Test
     public void createAndRetrieveUser() 
 	{
 	
 	    // Create a new user and save it
-		new LdapUser("flora.dupont@utt.fr", "test", "Flora", "Dupont", "flora.dupont").addUser();
+		//new LdapUser("flora.dupont@utt.fr", "test", "Flora", "Dupont", "flora.dupont").addUser();
 		
 	    // Retrieve the user with login+passwd
 		LdapUser flo = LdapUser.connect("flora.dupont", "test");
@@ -30,7 +37,7 @@ public class LdapTest extends UnitTest {
 	@Test
 	public void tryConnectAsUser() {
 		// Create a new user and save it
-		new LdapUser("flora.dupont@utt.fr", "test", "Flora", "Dupont", "flora.dupont").addUser();
+		//new LdapUser("flora.dupont@utt.fr", "test", "Flora", "Dupont", "flora.dupont").addUser();
 		LdapUser flo = LdapUser.connect("flora.dupont", "test");
 		LdapUser stef = LdapUser.connect("stephane.batteux", "pas_le_bon");
 		LdapUser flo2 = LdapUser.connect("flora.dupont", "mauvais_mot_de_passe");
@@ -45,7 +52,7 @@ public class LdapTest extends UnitTest {
 	
 	@Test 
 	public void tryUpdateUser(){
-		new LdapUser("flora.dupont@utt.fr", "test", "Flora", "Dupont", "flora.dupont").addUser();
+		//new LdapUser("flora.dupont@utt.fr", "test", "Flora", "Dupont", "flora.dupont").addUser();
 		LdapUser flo = LdapUser.connect("flora.dupont", "test");
 		LdapUser admin = LdapUser.connect("admin", "if052010");
 		
@@ -73,7 +80,7 @@ public class LdapTest extends UnitTest {
 	public void tryDeleteUser(){
 	
 		// Create a new user and save it
-		new LdapUser("flora.dupont@utt.fr", "test", "Flora", "Dupont", "flora.dupont").addUser();
+		//new LdapUser("flora.dupont@utt.fr", "test", "Flora", "Dupont", "flora.dupont").addUser();
 		LdapUser flo = LdapUser.connect("flora.dupont", "test");
 		
 		flo.deleteUser();
@@ -86,6 +93,5 @@ public class LdapTest extends UnitTest {
 		assertNull(flo2);
 	
 	}
-	
 
 }
