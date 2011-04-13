@@ -17,7 +17,6 @@ public class LdapTest extends UnitTest {
 		// Retrieve the user with login+passwd
 		flo = LdapUser.connect("flora.dupont", "test");
 	    
-	    // Test
 		//flo.deleteUser();	
 		//assertNotNull(flo); 
 	}
